@@ -8,7 +8,7 @@ This Streamlit app predicts the loan status (approved or not approved) based on 
 - Real-time prediction of loan status
 - Simple and intuitive interface
 
-You can access the hosted version of the app [here](https://share.streamlit.io/yourusername/loan_prediction_app/main/loan_prediction_app.py).
+You can access the hosted version of the app [here]([https://share.streamlit.io/yourusername/loan_prediction_app/main/loan_prediction_app.py](https://loan-approval-prediction-webapp.streamlit.app/)).
 
 ## Usage
 1. Open the app in your browser.
