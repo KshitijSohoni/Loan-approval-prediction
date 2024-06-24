@@ -33,8 +33,8 @@ def preprocess_text_input(text_data):
 
 # Load the trained model
 # Assuming the model is saved in a file named 'loan_model.pkl'
-with open('loan status prediction.sav', 'rb') as file:
-    model = pickle.load(file)
+model = pickle.load(open('loan status prediction.sav', 'rb'))
+
 
 # Streamlit UI
 st.title("Loan Prediction App")
