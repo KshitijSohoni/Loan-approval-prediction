@@ -1,14 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-
-
-# In[3]:
-
-
 import streamlit as st
 import numpy as np
-import pickle  # Assuming the model is saved as a pickle file
+import pickle
 
 # Define the category mapping
 category_mapping = {
@@ -33,8 +25,8 @@ def preprocess_text_input(text_data):
 
 # Load the trained model
 # Assuming the model is saved in a file named 'loan_model.pkl'
-model = pickle.load(open('loan status prediction.sav', 'rb'))
-
+with open('loan_model.pkl', 'rb') as file:
+    model = pickle.load(file)
 
 # Streamlit UI
 st.title("Loan Prediction App")
@@ -68,13 +60,18 @@ if st.button("Predict Loan Status"):
 
     # Reshape data for the model
     input_data = combined_data.reshape(1, -1)
+    
+    st.write("Input Data: ", input_data)  # Logging input data for debugging
 
-    # Make prediction
-    prediction = model.predict(input_data)
-
-    # Display the prediction result
-    if prediction == 1:
-        st.success('Predicted Loan Status: Yes')
-    else:
-        st.error('Predicted Loan Status: No')
-
+    try:
+        # Make prediction
+        prediction = model.predict(input_data)
+        
+        # Display the prediction result
+        if prediction == 1:
+            st.success('Predicted Loan Status: Yes')
+        else:
+            st.error('Predicted Loan Status: No')
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        st.error(f"Input Data: {input_data}")  # Display input data in case of error for debugging
